@@ -25,5 +25,5 @@ source venv/bin/activate  #Linux / Macbook
 venv\Scripts\activate # Windows
 
 #2. Install Flask
-pip install pillow perlin_noise
+pip install perlin-noise pillow matplotlib numpy
 ```
