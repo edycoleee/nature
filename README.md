@@ -173,7 +173,7 @@ print(buah)
 
 ---
 
-### 📌 Penjelasan Tambahan untuk Anak SMP
+### 📌 Penjelasan Tambahan
 
 | Perintah         | Artinya                                                                |
 | ---------------- | ---------------------------------------------------------------------- |
