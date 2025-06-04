@@ -366,9 +366,9 @@ if self.nama == "bola1" and hasattr(self.canvas, 'bola2'):
 #### 1. **Teorema Pythagoras (Untuk Ruang 2D)**
    - **Asal Usul**: Teorema Pythagoras berasal dari matematikawan Yunani kuno, Pythagoras, yang menyatakan bahwa dalam segitiga siku-siku, kuadrat panjang sisi miring (hipotenusa) sama dengan jumlah kuadrat panjang kedua sisi lainnya.
    - **Rumus Jarak 2D**: Jika kita memiliki dua titik dalam bidang 2D, \( P_1 = (x_1, y_1) \) dan \( P_2 = (x_2, y_2) \), jarak antara keduanya dapat dihitung dengan:
-     \[
+     $$
      d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
-     \]
+     $$
      Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki \( (x_2 - x_1) \) dan \( (y_2 - y_1) \).
 
 #### 2. **Rumus Euclidean (Untuk Ruang n-D)**
