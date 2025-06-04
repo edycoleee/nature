@@ -365,21 +365,21 @@ if self.nama == "bola1" and hasattr(self.canvas, 'bola2'):
 
 #### 1. **Teorema Pythagoras (Untuk Ruang 2D)**
    - **Asal Usul**: Teorema Pythagoras berasal dari matematikawan Yunani kuno, Pythagoras, yang menyatakan bahwa dalam segitiga siku-siku, kuadrat panjang sisi miring (hipotenusa) sama dengan jumlah kuadrat panjang kedua sisi lainnya.
-   - **Rumus Jarak 2D**: Jika kita memiliki dua titik dalam bidang 2D, $$\( P_1 = (x_1, y_1) \)$$ dan \( P_2 = (x_2, y_2) \), jarak antara keduanya dapat dihitung dengan:
+   - **Rumus Jarak 2D**: Jika kita memiliki dua titik dalam bidang 2D, $$\( P_1 = (x_1, y_1) \)$$ dan $$\( P_2 = (x_2, y_2) \)$$, jarak antara keduanya dapat dihitung dengan:
      
 $$\text{d} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} $$
      
-     Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki \( (x_2 - x_1) \) dan \( (y_2 - y_1) \).
+     Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki $$\( (x_2 - x_1) \)$$ dan $$\( (y_2 - y_1) \)$$.
 
 #### 2. **Rumus Euclidean (Untuk Ruang n-D)**
    - **Asal Usul**: Rumus Euclidean adalah generalisasi dari teorema Pythagoras ke ruang berdimensi lebih tinggi (3D, 4D, dst.). Konsep ini dikembangkan dari geometri Euclidean, yang dinamai dari matematikawan Yunani Euclid.
-   - **Rumus Jarak n-D**: Untuk dua titik dalam ruang n-dimensi, \( P_1 = (x_1, x_2, \dots, x_n) \) dan \( P_2 = (y_1, y_2, \dots, y_n) \), jarak Euclidean adalah:
+   - **Rumus Jarak n-D**: Untuk dua titik dalam ruang n-dimensi, $$\( P_1 = (x_1, x_2, \dots, x_n) \)$$ dan $$\( P_2 = (y_1, y_2, \dots, y_n) \)$$, jarak Euclidean adalah:
 
-    $$ \text{d} = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + \dots + (y_n - x_n)^2} $$
+$$ \text{d} = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + \dots + (y_n - x_n)^2} $$
 
    - Contoh 3D:
 
-    $$ \text{d} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} $$
+$$ \text{d} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} $$
 
 ### Implementasi dalam Python
 Berikut adalah contoh implementasi rumus jarak Euclidean dalam Python untuk 2D dan 3D, serta generalisasi untuk n-D:
