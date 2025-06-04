@@ -194,6 +194,11 @@ canvas.itemconfig(bola, fill="blue")  # Ganti warna bola jadi biru
 canvas.delete(bola)  # Hapus bola dari layar
 ```
 
+| Cara                     | Apa yang terjadi                     | Cocok untuk                   |
+| ------------------------ | ------------------------------------ | ----------------------------- |
+| `create_oval(...)`       | Membuat objek baru **setiap kali**   | Jejak, lintasan, "path"       |
+| `move()` atau `coords()` | **Memindahkan** objek yang sudah ada | Bola bergerak **tanpa jejak** |
+
 ---
 
 Tentu! Mari kita bahas lebih lanjut perbedaan dan penggunaan `coords()` vs `move()` **secara sederhana**,
@@ -360,6 +365,98 @@ if self.nama == "bola1" and hasattr(self.canvas, 'bola2'):
 | `hasattr(self.canvas, ...)` | Mengecek apakah `canvas` punya atribut tertentu (`bola2`) sebelum digunakan  |
 
 ---
+
+Penjelasan tentang `random` di Python sangat penting karena sering digunakan untuk membuat simulasi, permainan, atau perilaku acak seperti pergerakan bola.
+
+Berikut adalah penjelasan **sederhana dan mudah dipahami** untuk masing-masing fungsi `random` yang kamu sebutkan:
+
+---
+
+## 📌 1. `random.randint(0, 3)`
+
+* **Artinya:** Menghasilkan bilangan bulat **acak** dari 0 sampai 3 (termasuk 0 dan 3).
+* 📦 Contoh output: `0`, `1`, `2`, atau `3`
+* ✅ Cocok untuk memilih angka secara pasti, misalnya posisi awal di antara beberapa tempat.
+
+```python
+import random
+angka = random.randint(0, 3)
+print(angka)  # bisa jadi 0, 1, 2, atau 3
+```
+
+---
+
+## 📌 2. `random.uniform(-1, 1)`
+
+* **Artinya:** Menghasilkan bilangan **desimal (float)** acak antara -1 dan 1.
+* 📦 Contoh output: `-0.57`, `0.33`, `0.99`, `-0.12`
+* ✅ Cocok untuk kecepatan, arah, atau gerakan acak.
+
+```python
+arah = random.uniform(-1, 1)
+print(arah)  # contoh: 0.62345 atau -0.8312
+```
+
+---
+
+## 📌 3. `random.choice([-1, 0, 1, 1])`
+
+* **Artinya:** Memilih satu **elemen secara acak** dari daftar yang kamu berikan.
+* 📦 Daftar ini berisi `[-1, 0, 1, 1]`
+
+  * Karena angka `1` muncul dua kali, **kemungkinan keluar 1 lebih besar**.
+* 📦 Contoh output: `-1`, `0`, atau `1` (dengan 1 paling sering)
+
+```python
+arah_x = random.choice([-1, 0, 1, 1])
+print(arah_x)
+```
+
+---
+
+## 📌 4. `random.random()`
+
+* **Artinya:** Menghasilkan angka desimal (float) antara **0.0 dan 1.0**
+* 📦 Contoh output: `0.1234`, `0.9999`, `0.0`, `0.8765`
+* ✅ Cocok untuk peluang (probabilitas), misalnya 50% kemungkinan bergerak.
+
+```python
+nilai = random.random()
+print(nilai)  # antara 0.0 dan 1.0
+```
+
+---
+
+## 📌 5. `random.gauss(0, 1)`
+
+* **Artinya:** Menghasilkan angka acak berdasarkan **distribusi Gaussian (Normal)**.
+
+  * `0` adalah **mean (rata-rata)**
+  * `1` adalah **standard deviation (simpangan baku)**
+* 📦 Contoh output: `-0.85`, `1.1`, `0.0`, `2.3` (bisa negatif atau positif)
+* ✅ Cocok untuk simulasi realistis seperti variasi kecepatan manusia atau data medis.
+
+```python
+angka = random.gauss(0, 1)
+print(angka)
+```
+
+---
+
+## 🧠 Ringkasan Tabel
+
+| Fungsi                    | Jenis Output | Contoh Output  | Kegunaan Umum                               |
+| ------------------------- | ------------ | -------------- | ------------------------------------------- |
+| `random.randint(a, b)`    | Integer      | `2`            | Angka bulat acak dalam rentang              |
+| `random.uniform(a, b)`    | Float        | `-0.5`, `0.72` | Gerakan/desimal acak antara dua angka       |
+| `random.choice(list)`     | Dari daftar  | `-1`, `0`, `1` | Memilih dari opsi tertentu (termasuk bobot) |
+| `random.random()`         | Float (0-1)  | `0.44`, `0.99` | Probabilitas, peluang                       |
+| `random.gauss(mean, std)` | Float        | `-1.2`, `2.5`  | Data realistis berbasis statistik           |
+
+---
+
+Kalau kamu ingin, saya bisa buatkan contoh kecil **program bola bergerak dengan arah acak** berdasarkan `random.choice` dan `random.uniform`. Mau?
+
 
 ### Asal Usul Rumus Jarak antara Dua Koordinat
 
