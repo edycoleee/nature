@@ -360,3 +360,86 @@ if self.nama == "bola1" and hasattr(self.canvas, 'bola2'):
 | `hasattr(self.canvas, ...)` | Mengecek apakah `canvas` punya atribut tertentu (`bola2`) sebelum digunakan  |
 
 ---
+
+### Asal Usul Rumus Jarak antara Dua Koordinat
+
+#### 1. **Teorema Pythagoras (Untuk Ruang 2D)**
+   - **Asal Usul**: Teorema Pythagoras berasal dari matematikawan Yunani kuno, Pythagoras, yang menyatakan bahwa dalam segitiga siku-siku, kuadrat panjang sisi miring (hipotenusa) sama dengan jumlah kuadrat panjang kedua sisi lainnya.
+   - **Rumus Jarak 2D**: Jika kita memiliki dua titik dalam bidang 2D, \( P_1 = (x_1, y_1) \) dan \( P_2 = (x_2, y_2) \), jarak antara keduanya dapat dihitung dengan:
+     \[
+     d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+     \]
+     Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki \( (x_2 - x_1) \) dan \( (y_2 - y_1) \).
+
+#### 2. **Rumus Euclidean (Untuk Ruang n-D)**
+   - **Asal Usul**: Rumus Euclidean adalah generalisasi dari teorema Pythagoras ke ruang berdimensi lebih tinggi (3D, 4D, dst.). Konsep ini dikembangkan dari geometri Euclidean, yang dinamai dari matematikawan Yunani Euclid.
+   - **Rumus Jarak n-D**: Untuk dua titik dalam ruang n-dimensi, \( P_1 = (x_1, x_2, \dots, x_n) \) dan \( P_2 = (y_1, y_2, \dots, y_n) \), jarak Euclidean adalah:
+     \[
+     d = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + \dots + (y_n - x_n)^2}
+     \]
+   - Contoh 3D:
+     \[
+     d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
+     \]
+
+### Implementasi dalam Python
+Berikut adalah contoh implementasi rumus jarak Euclidean dalam Python untuk 2D dan 3D, serta generalisasi untuk n-D:
+
+#### 1. Jarak Euclidean 2D
+```python
+import math
+
+def jarak_2d(x1, y1, x2, y2):
+    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+# Contoh penggunaan
+titik1 = (1, 2)
+titik2 = (4, 6)
+print(jarak_2d(titik1[0], titik1[1], titik2[0], titik2[1]))  # Output: 5.0
+```
+
+#### 2. Jarak Euclidean 3D
+```python
+def jarak_3d(x1, y1, z1, x2, y2, z2):
+    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
+
+# Contoh penggunaan
+titik1_3d = (1, 2, 3)
+titik2_3d = (4, 6, 9)
+print(jarak_3d(*titik1_3d, *titik2_3d))  # Output: 7.0710678118654755
+```
+
+#### 3. Jarak Euclidean untuk n-D (Umum)
+```python
+def jarak_nd(titik1, titik2):
+    if len(titik1) != len(titik2):
+        raise ValueError("Dimensi titik tidak sama")
+    total = sum((p2 - p1)**2 for p1, p2 in zip(titik1, titik2))
+    return math.sqrt(total)
+
+# Contoh penggunaan
+titik1_nd = (1, 2, 3, 4)
+titik2_nd = (5, 6, 7, 8)
+print(jarak_nd(titik1_nd, titik2_nd))  # Output: 8.0
+```
+
+#### 4. Menggunakan NumPy (Lebih Efisien)
+Untuk perhitungan numerik yang lebih kompleks, NumPy sangat direkomendasikan:
+```python
+import numpy as np
+
+def jarak_numpy(titik1, titik2):
+    titik1 = np.array(titik1)
+    titik2 = np.array(titik2)
+    return np.linalg.norm(titik2 - titik1)
+
+# Contoh penggunaan
+titik1 = np.array([1, 2, 3])
+titik2 = np.array([4, 6, 9])
+print(jarak_numpy(titik1, titik2))  # Output: 7.0710678118654755
+```
+
+### Penjelasan Singkat:
+- **Teorema Pythagoras** adalah dasar untuk jarak 2D.
+- **Rumus Euclidean** menggeneralisasi konsep ini ke dimensi lebih tinggi.
+- Dalam Python, kita dapat mengimplementasikannya dengan `math.sqrt` untuk kasus sederhana atau `numpy.linalg.norm` untuk efisiensi dan kemudahan.
