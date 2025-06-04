@@ -369,7 +369,7 @@ if self.nama == "bola1" and hasattr(self.canvas, 'bola2'):
      
 $$\text{d} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} $$
      
-     Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki $$\( (x_2 - x_1) \)$$ dan $$\( (y_2 - y_1) \)$$.
+Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki $$\( (x_2 - x_1) \)$$ dan $$\( (y_2 - y_1) \)$$.     
 
 #### 2. **Rumus Euclidean (Untuk Ruang n-D)**
    - **Asal Usul**: Rumus Euclidean adalah generalisasi dari teorema Pythagoras ke ruang berdimensi lebih tinggi (3D, 4D, dst.). Konsep ini dikembangkan dari geometri Euclidean, yang dinamai dari matematikawan Yunani Euclid.
