@@ -374,9 +374,9 @@ Berikut adalah penjelasan **sederhana dan mudah dipahami** untuk masing-masing f
 
 ## 📌 1. `random.randint(0, 3)`
 
-* **Artinya:** Menghasilkan bilangan bulat **acak** dari 0 sampai 3 (termasuk 0 dan 3).
-* 📦 Contoh output: `0`, `1`, `2`, atau `3`
-* ✅ Cocok untuk memilih angka secara pasti, misalnya posisi awal di antara beberapa tempat.
+- **Artinya:** Menghasilkan bilangan bulat **acak** dari 0 sampai 3 (termasuk 0 dan 3).
+- 📦 Contoh output: `0`, `1`, `2`, atau `3`
+- ✅ Cocok untuk memilih angka secara pasti, misalnya posisi awal di antara beberapa tempat.
 
 ```python
 import random
@@ -388,9 +388,9 @@ print(angka)  # bisa jadi 0, 1, 2, atau 3
 
 ## 📌 2. `random.uniform(-1, 1)`
 
-* **Artinya:** Menghasilkan bilangan **desimal (float)** acak antara -1 dan 1.
-* 📦 Contoh output: `-0.57`, `0.33`, `0.99`, `-0.12`
-* ✅ Cocok untuk kecepatan, arah, atau gerakan acak.
+- **Artinya:** Menghasilkan bilangan **desimal (float)** acak antara -1 dan 1.
+- 📦 Contoh output: `-0.57`, `0.33`, `0.99`, `-0.12`
+- ✅ Cocok untuk kecepatan, arah, atau gerakan acak.
 
 ```python
 arah = random.uniform(-1, 1)
@@ -401,11 +401,12 @@ print(arah)  # contoh: 0.62345 atau -0.8312
 
 ## 📌 3. `random.choice([-1, 0, 1, 1])`
 
-* **Artinya:** Memilih satu **elemen secara acak** dari daftar yang kamu berikan.
-* 📦 Daftar ini berisi `[-1, 0, 1, 1]`
+- **Artinya:** Memilih satu **elemen secara acak** dari daftar yang kamu berikan.
+- 📦 Daftar ini berisi `[-1, 0, 1, 1]`
 
-  * Karena angka `1` muncul dua kali, **kemungkinan keluar 1 lebih besar**.
-* 📦 Contoh output: `-1`, `0`, atau `1` (dengan 1 paling sering)
+  - Karena angka `1` muncul dua kali, **kemungkinan keluar 1 lebih besar**.
+
+- 📦 Contoh output: `-1`, `0`, atau `1` (dengan 1 paling sering)
 
 ```python
 arah_x = random.choice([-1, 0, 1, 1])
@@ -416,9 +417,9 @@ print(arah_x)
 
 ## 📌 4. `random.random()`
 
-* **Artinya:** Menghasilkan angka desimal (float) antara **0.0 dan 1.0**
-* 📦 Contoh output: `0.1234`, `0.9999`, `0.0`, `0.8765`
-* ✅ Cocok untuk peluang (probabilitas), misalnya 50% kemungkinan bergerak.
+- **Artinya:** Menghasilkan angka desimal (float) antara **0.0 dan 1.0**
+- 📦 Contoh output: `0.1234`, `0.9999`, `0.0`, `0.8765`
+- ✅ Cocok untuk peluang (probabilitas), misalnya 50% kemungkinan bergerak.
 
 ```python
 nilai = random.random()
@@ -429,12 +430,13 @@ print(nilai)  # antara 0.0 dan 1.0
 
 ## 📌 5. `random.gauss(0, 1)`
 
-* **Artinya:** Menghasilkan angka acak berdasarkan **distribusi Gaussian (Normal)**.
+- **Artinya:** Menghasilkan angka acak berdasarkan **distribusi Gaussian (Normal)**.
 
-  * `0` adalah **mean (rata-rata)**
-  * `1` adalah **standard deviation (simpangan baku)**
-* 📦 Contoh output: `-0.85`, `1.1`, `0.0`, `2.3` (bisa negatif atau positif)
-* ✅ Cocok untuk simulasi realistis seperti variasi kecepatan manusia atau data medis.
+  - `0` adalah **mean (rata-rata)**
+  - `1` adalah **standard deviation (simpangan baku)**
+
+- 📦 Contoh output: `-0.85`, `1.1`, `0.0`, `2.3` (bisa negatif atau positif)
+- ✅ Cocok untuk simulasi realistis seperti variasi kecepatan manusia atau data medis.
 
 ```python
 angka = random.gauss(0, 1)
@@ -455,33 +457,345 @@ print(angka)
 
 ---
 
-Kalau kamu ingin, saya bisa buatkan contoh kecil **program bola bergerak dengan arah acak** berdasarkan `random.choice` dan `random.uniform`. Mau?
+Baris berikut dari kode #SCRIPT6:
 
+```python
+stepx = 1 if self.mouse_x > self.x else -1 if self.mouse_x < self.x else 0
+stepy = 1 if self.mouse_y > self.y else -1 if self.mouse_y < self.y else 0
+```
+
+Jika mouse_x lebih besar dari x (mouse ada di kanan walker) → stepx = 1 (gerak ke kanan)
+
+Jika mouse_x lebih kecil dari x (mouse ada di kiri walker) → stepx = -1 (gerak ke kiri)
+
+Jika mouse_x == x (mouse sejajar horizontal dengan walker) → stepx = 0 (tidak gerak horizontal)
+
+Jika mouse_y lebih besar dari y (mouse ada di bawah walker) → stepy = 1 (gerak ke bawah)
+
+Jika mouse_y lebih kecil dari y (mouse ada di atas walker) → stepy = -1 (gerak ke atas)
+
+Jika mouse_y == y (mouse sejajar vertikal dengan walker) → stepy = 0 (tidak gerak vertikal)
+
+adalah cara singkat (ternary expression) dalam Python untuk **menentukan arah gerak walker agar menuju ke posisi mouse**.
+
+Baris tersebut membuat walker bergerak **1 piksel lebih dekat ke mouse** secara deterministik, hanya dalam arah horizontal dan/atau vertikal (bisa diagonal juga jika perlu).
+
+Kalau kamu ingin versi yang lebih panjang dan mudah dibaca:
+
+```python
+if self.mouse_x > self.x:
+    stepx = 1
+elif self.mouse_x < self.x:
+    stepx = -1
+else:
+    stepx = 0
+
+if self.mouse_y > self.y:
+    stepy = 1
+elif self.mouse_y < self.y:
+    stepy = -1
+else:
+    stepy = 0
+```
+
+Mari kita bahas **perhitungan dan logika `update()`** dari class `Ball` pada script kamu dengan **penjelasan bertahap** yang cocok untuk anak SMP dan pemula:
+
+---
+
+## 📌 Fungsi `update()` Lengkap
+
+```python
+def update(self):
+    # Ambil nilai noise (antara -1 sampai 1)
+    noise_val = self.noise(self.t)
+    angle = noise_val * 2 * math.pi  # Ubah jadi sudut arah (0–360 derajat)
+
+    # Hitung arah gerak berdasarkan sudut
+    dx = math.cos(angle) * self.speed
+    dy = math.sin(angle) * self.speed
+    self.pos.add(Vector(dx, dy))  # Tambahkan arah ke posisi
+
+    self.t += 0.01  # Geser waktu untuk noise agar arah berubah perlahan
+```
+
+---
+
+## 🧠 Penjelasan SIMPLE PERLIN NOISE MOVING BALL
+
+### 1. `noise_val = self.noise(self.t)`
+
+- Mengambil nilai **Perlin noise** berdasarkan waktu `t`.
+- Nilainya antara **-1 sampai 1**.
+- Karena `t` akan bertambah setiap update (`t += 0.01`), maka arah pergerakan bola akan **berubah perlahan** dari frame ke frame.
+
+> 🧪 Misal: `noise_val = 0.25` pada saat tertentu
+
+---
+
+### 2. `angle = noise_val * 2 * math.pi`
+
+- Noise yang awalnya `-1..1` diubah menjadi **sudut arah**.
+- `2π` (≈ 6.28 radian) adalah **satu lingkaran penuh** (360 derajat).
+
+### Contoh perhitungan:
+
+Misal:
+
+- `noise_val = 0.25`
+- Maka `angle = 0.25 × 2π ≈ 0.25 × 6.28 ≈ 1.57 rad` → setara 90° (arah atas)
+
+Jika:
+
+- `noise_val = -1` → `angle = -2π` (360° ke kiri)
+- `noise_val = 1` → `angle = +2π` (360° ke kanan)
+
+Dengan kata lain:
+
+> Nilai noise dipetakan ke arah gerak di bidang 2D, seolah-olah bola bergerak dalam arah acak tapi halus seperti kompas yang berubah perlahan.
+
+---
+
+### 3. `dx = math.cos(angle) * self.speed`
+
+### 4. `dy = math.sin(angle) * self.speed`
+
+- Mengubah sudut `angle` menjadi gerakan horizontal (`dx`) dan vertikal (`dy`).
+- Fungsi `cos(angle)` memberi **gerakan di sumbu X**.
+- Fungsi `sin(angle)` memberi **gerakan di sumbu Y**.
+- Dikalikan `self.speed` (misalnya 2) agar bola bergerak dengan kecepatan tetap.
+
+#### Misal:
+
+Jika `angle = 90°` (π/2 rad):
+
+- `cos(π/2) = 0` → `dx = 0`
+- `sin(π/2) = 1` → `dy = 2`
+
+> Bola akan bergerak ke atas (sumbu Y naik)
+
+Jika `angle = 0°`:
+
+- `dx = 2`, `dy = 0` → bola ke kanan
+
+---
+
+### 5. `self.pos.add(Vector(dx, dy))`
+
+- Update posisi bola berdasarkan perubahan arah dan kecepatan.
+- `self.pos` adalah vektor posisi saat ini.
+- `add(Vector(dx, dy))` menambahkan perubahan arah ke posisi bola.
+
+---
+
+### 6. `self.t += 0.01`
+
+- Menambahkan waktu sedikit demi sedikit.
+- Tujuannya: agar saat `self.noise(self.t)` dipanggil lagi, outputnya berubah sedikit.
+- Karena Perlin noise itu smooth, perubahan kecil pada `t` → arah berubah perlahan → gerakan alami.
+
+---
+
+## 🧭 Analogi
+
+Bayangkan kamu jalan di hutan sambil memegang kompas:
+
+- Kompas pelan-pelan berubah arah tiap beberapa detik.
+- Kamu selalu bergerak ke arah jarum kompas.
+- Kompas = fungsi noise.
+- Gerakanmu = `dx, dy` berdasarkan sudut dari noise itu.
+
+---
+
+## 🧮 Simulasi Perhitungan
+
+Misalnya:
+
+- `self.t = 0.5`
+- `noise_val = 0.25`
+- `angle = 0.25 × 2π ≈ 1.57 rad`
+- `speed = 2`
+
+Maka:
+
+- `dx = cos(1.57) × 2 ≈ 0 × 2 = 0`
+- `dy = sin(1.57) × 2 ≈ 1 × 2 = 2`
+
+Posisi baru:
+
+- `pos.x = pos.x + 0`
+- `pos.y = pos.y + 2`
+
+---
+
+## ✨ Kesimpulan
+
+| Langkah              | Fungsi                                  |
+| -------------------- | --------------------------------------- |
+| `noise(t)`           | Menghasilkan arah dari waktu            |
+| `angle = noise × 2π` | Ubah noise menjadi sudut                |
+| `cos/sin(angle)`     | Hitung gerakan berdasarkan sudut        |
+| `add(dx, dy)`        | Gerakkan bola sesuai arah dan kecepatan |
+| `t += 0.01`          | Buat arah berubah halus setiap frame    |
+
+---
+
+Penjelasan lengkap tentang **tahapan gerakan dan perhitungan** dalam `SCRIPT18: Perlin Noise Moving Triangle with Border` dibagi menjadi tiga bagian besar:
+
+---
+
+## 🧠 **Konsep Dasar**
+
+Skrip ini adalah simulasi visual dari _“kawanan segitiga”_ yang mengikuti medan aliran (flow field) berbasis **Perlin noise**, seolah-olah mereka seperti partikel di dalam medan angin yang berubah-ubah arah. Setiap segitiga adalah **kendaraan (Vehicle)**, dan medan vektor (FlowField) dihasilkan oleh noise untuk memastikan arah gerakan tampak alami dan halus.
+
+---
+
+## 🧩 **Tahapan Gerakan per Frame**
+
+### 1. **Inisialisasi `FlowField`**
+
+```python
+angle = self.noise([i * 0.1, j * 0.1]) * 2 * math.pi
+v = Vector(math.cos(angle), math.sin(angle))
+```
+
+- Per titik grid `(i, j)` dibuat arah berbasis **Perlin noise**.
+- `noise()` menghasilkan angka antara `-1` dan `1`, lalu diubah jadi sudut `angle` (dalam radian) dengan `× 2π`.
+- Sudut tersebut dikonversi ke vektor arah `(cos(angle), sin(angle))`, lalu disimpan di grid `self.field`.
+
+---
+
+### 2. **Setiap Kendaraan Memanggil `follow()`**
+
+```python
+desired = flowfield.lookup(self.position)
+desired.mult(self.maxspeed)
+steer = Vector.sub_vec(desired, self.velocity)
+steer.limit(self.maxforce)
+self.apply_force(steer)
+```
+
+#### a. **Ambil arah aliran dari grid flowfield di posisi saat ini**
+
+- `lookup()` menentukan grid mana yang dilalui `self.position` dan mengambil vektor arah `desired` dari grid tersebut.
+
+#### b. **Buat vektor target arah gerakan**
+
+- `desired` diskalakan ke `maxspeed`, karena kita ingin kendaraan bergerak cepat ke arah aliran.
+
+#### c. **Hitung gaya steering**
+
+- `steer = desired - current velocity` → kendaraan mencoba mengubah arah menuju vektor flowfield.
+- `steer` dibatasi dengan `maxforce` untuk mencegah perubahan arah yang ekstrem (smooth movement).
+
+#### d. **Terapkan gaya ke kendaraan**
+
+```python
+self.apply_force(steer)
+```
+
+- Menambahkan `steer` ke percepatan (`acceleration`).
+
+---
+
+### 3. **Update Fisika Kendaraan**
+
+```python
+self.velocity.add(self.acceleration)
+self.velocity.limit(self.maxspeed)
+self.position.add(self.velocity)
+self.acceleration.mult(0)
+```
+
+- `velocity` ditambah `acceleration`, lalu dibatasi `maxspeed`.
+- Posisi diperbarui berdasarkan `velocity`.
+- Percepatan di-reset (`mult(0)`) agar tidak menumpuk.
+
+---
+
+### 4. **Cek dan Bungkus Batas Layar**
+
+```python
+if self.position.x > WIDTH: self.position.x = 0  # dst
+```
+
+- Jika kendaraan melewati tepi layar, ia muncul kembali dari sisi berlawanan (seperti torus space).
+
+---
+
+### 5. **Gambar Kendaraan sebagai Segitiga**
+
+```python
+theta = self.velocity.heading() + math.pi / 2
+```
+
+- Hitung sudut arah gerakan `velocity`, lalu tambahkan `π/2` agar segitiga menghadap arah gerak.
+- Tiga titik segitiga dihitung berdasarkan rotasi sudut `theta`.
+
+---
+
+## 📐 **Contoh Perhitungan Langkah**
+
+Misalnya:
+
+- `noise([i=5, j=7]) = 0.25`
+- `angle = 0.25 * 2π ≈ 1.57 rad ≈ 90°`
+- Maka vektor `desired = (cos(1.57), sin(1.57)) ≈ (0.00, 1.00)` → arah ke atas.
+
+Jika:
+
+- `maxspeed = 3`
+- `velocity = (1.0, 0.5)`
+
+Maka:
+
+- `desired = (0, 1) * 3 = (0, 3)`
+- `steer = desired - velocity = (0 - 1.0, 3 - 0.5) = (-1.0, 2.5)`
+- `steer` dibatasi `maxforce = 0.5` → `normalize` → `(x, y) * 0.5`
+- `acceleration = steer`
+- Kemudian dihitung `velocity += acceleration`, `position += velocity`.
+
+---
+
+## 🎯 Kesimpulan Visual & Konseptual
+
+| Komponen           | Fungsi                                                  |
+| ------------------ | ------------------------------------------------------- |
+| **Perlin Noise**   | Membuat medan aliran smooth alami dan tidak acak tajam. |
+| **FlowField**      | Grid arah vektor berbasis Perlin noise.                 |
+| **Vehicle**        | Segitiga yang bergerak mengikuti arah vektor.           |
+| **Steering Force** | Gaya untuk mengarahkan kendaraan ke arah `flowfield`.   |
+| **Borders**        | Membungkus kendaraan ke sisi berlawanan layar.          |
+
+---
 
 ### Asal Usul Rumus Jarak antara Dua Koordinat
 
 #### 1. **Teorema Pythagoras (Untuk Ruang 2D)**
-   - **Asal Usul**: Teorema Pythagoras berasal dari matematikawan Yunani kuno, Pythagoras, yang menyatakan bahwa dalam segitiga siku-siku, kuadrat panjang sisi miring (hipotenusa) sama dengan jumlah kuadrat panjang kedua sisi lainnya.
-   - **Rumus Jarak 2D**: Jika kita memiliki dua titik dalam bidang 2D, $$\( P_1 = (x_1, y_1) \)$$ dan $$\( P_2 = (x_2, y_2) \)$$, jarak antara keduanya dapat dihitung dengan:
-     
+
+- **Asal Usul**: Teorema Pythagoras berasal dari matematikawan Yunani kuno, Pythagoras, yang menyatakan bahwa dalam segitiga siku-siku, kuadrat panjang sisi miring (hipotenusa) sama dengan jumlah kuadrat panjang kedua sisi lainnya.
+- **Rumus Jarak 2D**: Jika kita memiliki dua titik dalam bidang 2D, $$\( P_1 = (x_1, y_1) \)$$ dan $$\( P_2 = (x_2, y_2) \)$$, jarak antara keduanya dapat dihitung dengan:
+
 $$\text{d} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} $$
-     
-Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki $$\( (x_2 - x_1) \)$$ dan $$\( (y_2 - y_1) \)$$.     
+
+Ini berasal dari membayangkan segitiga siku-siku dengan kaki-kaki $$\( (x_2 - x_1) \)$$ dan $$\( (y_2 - y_1) \)$$.
 
 #### 2. **Rumus Euclidean (Untuk Ruang n-D)**
-   - **Asal Usul**: Rumus Euclidean adalah generalisasi dari teorema Pythagoras ke ruang berdimensi lebih tinggi (3D, 4D, dst.). Konsep ini dikembangkan dari geometri Euclidean, yang dinamai dari matematikawan Yunani Euclid.
-   - **Rumus Jarak n-D**: Untuk dua titik dalam ruang n-dimensi, $$\( P_1 = (x_1, x_2, \dots, x_n) \)$$ dan $$\( P_2 = (y_1, y_2, \dots, y_n) \)$$, jarak Euclidean adalah:
+
+- **Asal Usul**: Rumus Euclidean adalah generalisasi dari teorema Pythagoras ke ruang berdimensi lebih tinggi (3D, 4D, dst.). Konsep ini dikembangkan dari geometri Euclidean, yang dinamai dari matematikawan Yunani Euclid.
+- **Rumus Jarak n-D**: Untuk dua titik dalam ruang n-dimensi, $$\( P_1 = (x_1, x_2, \dots, x_n) \)$$ dan $$\( P_2 = (y_1, y_2, \dots, y_n) \)$$, jarak Euclidean adalah:
 
 $$ \text{d} = \sqrt{(y_1 - x_1)^2 + (y_2 - x_2)^2 + \dots + (y_n - x_n)^2} $$
 
-   - Contoh 3D:
+- Contoh 3D:
 
 $$ \text{d} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} $$
 
 ### Implementasi dalam Python
+
 Berikut adalah contoh implementasi rumus jarak Euclidean dalam Python untuk 2D dan 3D, serta generalisasi untuk n-D:
 
 #### 1. Jarak Euclidean 2D
+
 ```python
 import math
 
@@ -495,6 +809,7 @@ print(jarak_2d(titik1[0], titik1[1], titik2[0], titik2[1]))  # Output: 5.0
 ```
 
 #### 2. Jarak Euclidean 3D
+
 ```python
 def jarak_3d(x1, y1, z1, x2, y2, z2):
     return math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
@@ -506,6 +821,7 @@ print(jarak_3d(*titik1_3d, *titik2_3d))  # Output: 7.0710678118654755
 ```
 
 #### 3. Jarak Euclidean untuk n-D (Umum)
+
 ```python
 def jarak_nd(titik1, titik2):
     if len(titik1) != len(titik2):
@@ -520,7 +836,9 @@ print(jarak_nd(titik1_nd, titik2_nd))  # Output: 8.0
 ```
 
 #### 4. Menggunakan NumPy (Lebih Efisien)
+
 Untuk perhitungan numerik yang lebih kompleks, NumPy sangat direkomendasikan:
+
 ```python
 import numpy as np
 
@@ -536,6 +854,7 @@ print(jarak_numpy(titik1, titik2))  # Output: 7.0710678118654755
 ```
 
 ### Penjelasan Singkat:
+
 - **Teorema Pythagoras** adalah dasar untuk jarak 2D.
 - **Rumus Euclidean** menggeneralisasi konsep ini ke dimensi lebih tinggi.
 - Dalam Python, kita dapat mengimplementasikannya dengan `math.sqrt` untuk kasus sederhana atau `numpy.linalg.norm` untuk efisiensi dan kemudahan.
