@@ -126,6 +126,10 @@ class Vector:
         # Menghasilkan vektor baru dengan x dibalik
         return Vector(-self.x, self.y)
 
+    @staticmethod
+    def fromAngle(angle):
+        return Vector(math.cos(angle), math.sin(angle))
+
     # ---------- Ambil posisi ----------
     def get_position(self):
         # Mengembalikan posisi vektor sebagai tuple
