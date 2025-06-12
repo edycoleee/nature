@@ -11,6 +11,7 @@ class Vector:
         # Menambahkan nilai vektor lain ke vektor ini (ubah self)
         self.x += other.x
         self.y += other.y
+        return self
 
     def added(self, other):
         # Menghasilkan vektor baru hasil penjumlahan tanpa mengubah self
@@ -21,6 +22,7 @@ class Vector:
         # Mengurangi nilai vektor lain dari vektor ini (ubah self)
         self.x -= other.x
         self.y -= other.y
+        return self
 
     def subbed(self, other):
         # Menghasilkan vektor baru hasil pengurangan tanpa mengubah self
@@ -31,6 +33,7 @@ class Vector:
         # Mengalikan nilai vektor dengan skalar (ubah self)
         self.x *= scalar
         self.y *= scalar
+        return self
 
     def multed(self, scalar):
         # Menghasilkan vektor baru hasil perkalian dengan skalar
@@ -42,6 +45,7 @@ class Vector:
         if scalar != 0:
             self.x /= scalar
             self.y /= scalar
+            return self
 
     def dived(self, scalar):
         # Menghasilkan vektor baru hasil pembagian dengan skalar
