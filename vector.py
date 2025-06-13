@@ -134,6 +134,14 @@ class Vector:
     def fromAngle(angle):
         return Vector(math.cos(angle), math.sin(angle))
 
+    @staticmethod
+    def from_angle(angle, length=1):
+        return Vector(math.sin(angle) * length, math.cos(angle) * length)
+
+    @staticmethod
+    def sub_vectors(v1, v2):
+        return Vector(v1.x - v2.x, v1.y - v2.y)
+
     # ---------- Ambil posisi ----------
     def get_position(self):
         # Mengembalikan posisi vektor sebagai tuple
