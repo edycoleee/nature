@@ -97,9 +97,16 @@ class Vector:
         self.normalize()
         self.mult(new_mag)
 
-    def setted_mag(self, new_mag):
-        # Menghasilkan vektor baru dengan panjang tertentu
-        return self.normalized().multed(new_mag)
+    # def setted_mag(self, new_mag):
+    #     # Menghasilkan vektor baru dengan panjang tertentu
+    #     return self.normalized().multed(new_mag)
+
+    def setted_mag(self, value):
+        m = self.mag()
+        if m != 0:
+            return self.copy().dived(m).multed(value)
+        return Vector()
+
 
     # ---------- Heading (sudut arah vektor) ----------
     def heading(self):
