@@ -129,6 +129,24 @@ class Vector:
         self.y = y
 
     # ---------- Rotasi 90 derajat (hanya horizontal mirror) ----------
+
+        # ---------- Rotasi ----------
+    def rotate(self, angle):
+        cos_theta = math.cos(angle)
+        sin_theta = math.sin(angle)
+        x = self.x * cos_theta - self.y * sin_theta
+        y = self.x * sin_theta + self.y * cos_theta
+        self.x, self.y = x, y
+        return self
+
+    def rotated(self, angle):
+        cos_theta = math.cos(angle)
+        sin_theta = math.sin(angle)
+        x = self.x * cos_theta - self.y * sin_theta
+        y = self.x * sin_theta + self.y * cos_theta
+        return Vector(x, y)
+
+
     def rotate90x(self):
         # Menghasilkan vektor baru dengan x dibalik
         return Vector(self.x, -self.y)
