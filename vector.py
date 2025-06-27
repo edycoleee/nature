@@ -117,6 +117,9 @@ class Vector:
         # Sudut dalam derajat
         return math.degrees(self.heading())
 
+    def heading_rad(self):
+        # Kembalikan sudut dalam radian terhadap sumbu x
+        return math.atan2(self.y, self.x) if (self.x != 0 or self.y != 0) else 0
     # ---------- Copy / clone ----------
     def copy(self):
         # Menghasilkan salinan dari vektor ini
