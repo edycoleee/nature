@@ -149,6 +149,24 @@ class Vector:
         y = self.x * sin_theta + self.y * cos_theta
         return Vector(x, y)
 
+    # ---------- Dot Product ----------
+    def dot(self, other):
+        """Dot product antara vektor ini dan vektor lain"""
+        return self.x * other.x + self.y * other.y
+
+    # ---------- Angle Between ----------
+    def angle_between(self, other):
+        """Mengembalikan sudut (radian) antara dua vektor"""
+        dot_prod = self.dot(other)
+        mags = self.mag() * other.mag()
+        if mags == 0:
+            return 0
+        cos_theta = max(min(dot_prod / mags, 1), -1)  # Clamp untuk menghindari domain error
+        return math.acos(cos_theta)
+
+    def angle_to(self, other):
+        """Mengembalikan sudut (radian) dari vektor ini ke vektor lain"""
+        return math.atan2(other.y - self.y, other.x - self.x)
 
     def rotate90x(self):
         # Menghasilkan vektor baru dengan x dibalik
@@ -167,13 +185,23 @@ class Vector:
         return Vector(math.sin(angle) * length, math.cos(angle) * length)
 
     @staticmethod
-    def sub_vectors(v1, v2):
+    def add_vectors(v1: 'Vector', v2: 'Vector') -> 'Vector':
+        return Vector(v1.x + v2.x, v1.y + v2.y)
+
+    @staticmethod
+    def sub_vectors(v1: 'Vector', v2: 'Vector') -> 'Vector':
         return Vector(v1.x - v2.x, v1.y - v2.y)
 
     # ---------- Ambil posisi ----------
     def get_position(self):
         # Mengembalikan posisi vektor sebagai tuple
         return (self.x, self.y)
+
+    def dist(self, other):
+        """Mengembalikan jarak antara vektor ini dengan vektor lain"""
+        dx = self.x - other.x
+        dy = self.y - other.y
+        return math.sqrt(dx*dx + dy*dy)
 
     # ---------- Representasi ----------
     def __repr__(self):
